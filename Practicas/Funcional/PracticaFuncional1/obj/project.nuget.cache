@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "SWy51IhPcpYO4C8fS44ZlAuTJB8J+r3bLdMnXxO9YuqY7GpJJMJLZqfD/7Qn6Sr6CKDm1yQqQMsEe78JdG/M3Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\camiu\\OneDrive\\Documents\\2023\\IV Semestre\\Lenguajes de Programación\\RepoF#\\RepoF#.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\camiu\\.nuget\\packages\\fsharp.core\\7.0.400\\fsharp.core.7.0.400.nupkg.sha512"
+  ],
+  "logs": []
+}
