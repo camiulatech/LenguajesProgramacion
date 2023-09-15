@@ -87,7 +87,6 @@ let grafoConPesos = [
     ("x", [("c", 1)]);
 ]
 
-// Función auxiliar para buscar un nodo en una lista de tuplas (clave, valor)
 let rec buscarNodo nodo lista =
     match lista with
     | [] -> None
@@ -95,12 +94,10 @@ let rec buscarNodo nodo lista =
         if key = nodo then Some (key, value)
         else buscarNodo nodo rest
 
-// Función para generar vecinos con pesos
 let vecinosConPesos nodo grafo =
     match buscarNodo nodo grafo with
     | Some (_, neighbors) -> neighbors
     | None -> []
-
 
 let extenderConPesos ruta grafo = 
     let nodoActual = fst (List.head ruta)
@@ -108,7 +105,6 @@ let extenderConPesos ruta grafo =
     let rutaSinRepetidos = List.filter (fun (vecino, _) -> not (List.exists (fun (nodo, _) -> nodo = vecino) ruta)) vecinos
     List.map (fun (vecino, peso) -> (vecino, peso + (snd (List.head ruta)))) rutaSinRepetidos
 
-// Función principal de búsqueda en profundidad con pesos
 let rec profConPesos ini fin grafo =
     let rec prof_aux fin ruta grafo =
         if List.isEmpty ruta then []
@@ -133,7 +129,6 @@ printfn "Camino más corto: %A" caminoMasCorto
 // entendiendo que cada casilla del laberinto puede verse como un “vecino” adjunto de otra, siempre
 // que no haya pared
 
-// Función para generar vecinos
 let rec vecinos nodo grafo =
     match grafo with
     | [] -> []
@@ -141,14 +136,13 @@ let rec vecinos nodo grafo =
         if head = nodo then neighbors
         else vecinos nodo rest
 
-// Función principal de búsqueda en anchura (BFS) para encontrar el camino más corto
 let bfsCaminoMasCorto inicio fin grafo =
     let rec bfsAux cola visitados =
         match cola with
-        | [] -> [] // No se encontró un camino desde 'inicio' hasta 'fin'
+        | [] -> [] // No se encontró un camino
         | (nodo, ruta) :: resto ->
             if nodo = fin then
-                List.rev (fin :: ruta) // Se encontró un camino desde 'inicio' hasta 'fin'
+                List.rev (fin :: ruta) // Se encontró un camino
             else
                 let vecinosDelNodo = vecinos nodo grafo
                 let nuevosVecinos =
@@ -159,10 +153,9 @@ let bfsCaminoMasCorto inicio fin grafo =
                 bfsAux (resto @ nuevasRutas) nuevosVisitados
     let resultado = bfsAux [(inicio, [])] [inicio]
     match resultado with
-    | [] -> None // No se encontró un camino desde 'inicio' hasta 'fin'
-    | _ -> Some resultado // Se encontró un camino desde 'inicio' hasta 'fin'
+    | [] -> None 
+    | _ -> Some resultado 
 
-// Ejemplo de uso:
 let grafo5 =
     [("i", ["a"; "b"]);
      ("a", ["i"; "c"; "d"]);
@@ -180,3 +173,4 @@ printfn "\nEjercicio 5"
 match bfsCaminoMasCorto inicio fin grafo5 with
 | None -> printfn "No se encontró un camino desde %s hasta %s." inicio fin
 | Some camino -> printfn "Camino más corto desde %s hasta %s: %A" inicio fin camino
+
