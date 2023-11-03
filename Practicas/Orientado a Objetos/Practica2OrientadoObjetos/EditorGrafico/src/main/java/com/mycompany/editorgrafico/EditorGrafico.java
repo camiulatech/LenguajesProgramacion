@@ -1,5 +1,7 @@
-package com.mycompany.editorgrafico;
+// Camila Ulate Chaves
+// 2022141633
 
+package com.mycompany.editorgrafico;
 
 public class EditorGrafico {
 
